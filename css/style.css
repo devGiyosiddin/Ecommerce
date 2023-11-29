@@ -148,6 +148,8 @@ img {
 }
 
 .site-header__card {
+  margin-right: 46px;
+  margin-left: 24px;
 }
 
 .site-header__card-link {
@@ -179,6 +181,26 @@ img {
   width: 22px;
   height: 20px;
   object-fit: contain;
+}
+
+.site-header__profile-wrapper {}
+
+.site-header__profile-link {
+  display: flex;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid transparent;
+}
+.site-header__profile-link:hover {
+  border-color: var(--accent-color);
+}
+
+.site-header__profile-avatar {
+  width: 50px;
+  height: 50px;
+
 }
 
 
