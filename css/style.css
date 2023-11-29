@@ -98,7 +98,7 @@ img {
   opacity: 0.6;
 }
 
-.log-img {
+.logo-img {
   display: block;
   width: 137px;
   height: 20px;
@@ -145,6 +145,40 @@ img {
   height: 4px;
   background-color: var(--accent-color);
   content: "";
+}
+
+.site-header__card {
+}
+
+.site-header__card-link {
+  position: relative;
+  display: flex;
+  color: var(--text-color);
+}
+.site-header__card-link:hover {
+  color: var(--text-dark);
+}
+.site-header__card-link:active {
+  opacity: 0.6;
+}
+
+.site-header__cart-product-count{
+  position: absolute;
+  padding: 1px 6px;
+  left: calc(100% - 13px);
+  top: -6px; 
+  color: #fff;
+  font-weight: bold;
+  font-size: 10px;
+  line-height: normal;
+  border-radius: 7px;
+  background-color: var(--accent-color);
+}
+
+.site-header__cart-icon {
+  width: 22px;
+  height: 20px;
+  object-fit: contain;
 }
 
 
