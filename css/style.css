@@ -423,7 +423,7 @@ img {
   height: 445px;
   object-fit: cover;
   border-right: 15px;
-}
+} 
 
 .img-showcase__thumbnails {
   display: flex;
@@ -466,6 +466,7 @@ img {
   cursor: pointer;
   overflow: hidden;
   outline: 0;
+  border: 0;
   border-radius: 10px;
   background-color: transparent;
 }
