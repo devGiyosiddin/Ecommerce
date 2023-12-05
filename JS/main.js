@@ -1,7 +1,8 @@
 const modifiers = {
     siteHadercartModalOpen: 'site-header__cart-modal--open',
     imgThumbnailActive: 'img-showcase__thumbnail--active',
-    lightboxOpen: 'lightbox--open'
+    imgShowcaseThumbnailActive:'img- showcase__thumbnail--active',
+    lightboxOpen: 'lightbox--open',
 }
 
 
@@ -27,7 +28,7 @@ const elImgShowcaseActiveImg = document.querySelector('.img-showcase__acitve-img
 function deactivateImgShowcaseThumbnails () {
     // Deactivate all active items
     elsImgShowcaseThumbnailButton.forEach(function (elImgShowcaseThumbnailButton) {
-        elImgShowcaseThumbnailButton.parentElement.classList.remove(modifiers.imgThumbnailActive)
+        elImgShowcaseThumbnailButton.parentElement.classList.remove('img-showcase__thumbnail--active')
     })
 }
 
