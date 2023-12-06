@@ -145,6 +145,19 @@ img {
   margin-right: 16px;
 }
 
+/* Badge */
+.badge {
+  display: inline-block;
+  padding: 7px 8px 4px;
+  color: var(--accent-color);
+  line-height: normal;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  background-color: var(--accent-color-light);
+}
+
+
 /*  SHOPPING-CART-PRODUCTS */
 .shopping-cart__products {
   padding: 0;
@@ -646,6 +659,100 @@ img {
 .product-page__info {
   width: 100%;
   max-width: 445px;
+}
+
+/* PRODUCT-INFO */
+.product-info {
+  width: 100%;
+  max-width: 445px;
+  padding-top: 62px;
+  padding-bottom: 77px;
+}
+.product-info_manufacturer {
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  font-size: 13px;
+  letter-spacing: 2px;
+  line-height: normal;
+  font-weight: 700;
+}
+.product-info__title {
+  margin: 0 0 32px;
+  color: var(--text-dark);
+  font-size: 44px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 48px;
+}
+.product-info__description {
+  margin: 0 0 28px;
+  color: var(--text-color);
+  font-size: 16px;
+}
+.product-info__price-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.product-info__old-price {
+  display: block;
+  margin-bottom: 32px;
+  color: #b6bcc8;
+  font-weight: bold;
+}
+.product-info__price {
+  margin-right: 16px;
+  font-size: 28px;
+  line-height: normal;
+  font-weight: bold;
+  color: var(--text-dark);
+}
+.product-info__cart-actions {
+  display: flex;
+}
+.product-info__quantity-wrapper {
+  margin-right: 16px;
+  display: flex;
+  border-radius: 10px;
+  background-color: var(--light-bg);
+}
+.product-info__quantity-button {
+  width: 52px;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  color: var(--accent-color);
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: bold;
+  border-radius: 10px;
+  background-color: transparent;
+}
+.product-info__quantity-button:hover {
+  color: var(--accent-color-hover);
+}
+.product-info__quantity-button:active {
+  color: #fff;
+  background-color: var(--accent-color-hover);
+}
+
+.product-info__quantity {
+  width: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  line-height: normal;
+}
+
+.button__inner {
+}
+.button__prepend {
+}
+.button-icon {
+}
+.button__text {
 }
 
 

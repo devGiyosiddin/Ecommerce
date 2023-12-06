@@ -157,3 +157,27 @@ if (elLightboxControlPrev) {
         elLightboxActiveImg.srcset = elPrevActiveItem.querySelector('.js-lightbox-img-showcase__thumbnail-button').dataset.srcset;
     });
 };
+
+
+// Product Count
+const elIncrementButton = document.querySelector('.js-quantity-increment-button');
+const elDecrementButton = document.querySelector('.js-quantity-decrement-button');
+const elProductQt = document.querySelector('.product-info__quantity');
+
+// Increment
+if (elIncrementButton) {
+    elIncrementButton.addEventListener('click', function() {
+        elProductQt.textContent = parseInt(elProductQt.textContent, 10) + 1;
+    });
+};
+
+// Decrement
+if (elDecrementButton) {
+    elDecrementButton.addEventListener('click', function() {
+        const qty = parseInt(elProductQt.textContent, 10);
+
+        if (qty >0) {
+            elProductQt.textContent = qty - 1;
+        }
+    });
+};
