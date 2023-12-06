@@ -43,7 +43,7 @@ html {
 }
 
 *:focus {
-  outline: 3px dashed blue;
+  outline: 3px solid orange;
   outline-offset: 3px;
 }
 
@@ -592,7 +592,6 @@ img {
   margin: 0;
   cursor: pointer;
   overflow: hidden;
-  outline: 0;
   border: 0;
   border-radius: 10px;
   background-color: transparent;
