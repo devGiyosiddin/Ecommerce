@@ -42,10 +42,6 @@ html {
   box-sizing: inherit;
 }
 
-*:focus {
-  outline: 2px solid gold;
-  outline-offset: 0px;
-}
 
 body {
   height: 100%;
