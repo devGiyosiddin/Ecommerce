@@ -13,7 +13,7 @@
 /* FONT-FACE */
 @font-face {
   font-family: "Kumbh Sans";
-  src: url("../fonts/") format("woff2"),
+  src: url("../fonts/KumbhSans-Regular.woff2") format("woff2"),
     url("../fonts/KumbhSans-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
@@ -572,17 +572,19 @@ img {
 
 .img-showcase__thumbnails {
   scrollbar-color: var(--accent-color-hover) var(--divider-bg); /* Foreground, Background */
+ 
 }
 .img-showcase__thumbnails::-webkit-scrollbar {
   width: 10px; /* Mostly for vertical scrollbars */
   height: 10px; /* Mostly for horizontal scrollbars */
+  border-radius: 10px;
 }
 .img-showcase__thumbnails::-webkit-scrollbar-thumb {
-  border-radius: 5px;
+  border-radius: 10px;
   background: var(--accent-color-hover); /* Foreground */
 }
 .img-showcase__thumbnails::-webkit-scrollbar-track {
-  border-radius: 5px;
+  border-radius: 10px;
   background: var(--divider-bg); /* Background */
 }
 

@@ -181,3 +181,31 @@ if (elDecrementButton) {
         }
     });
 };
+
+
+// Right - Left arrow scroll
+document.addEventListener('keydown', function (event) {
+    // Проверяем, является ли событие клавишей влево
+    if (event.key === 'ArrowLeft') {
+        showPrevImage();
+    }
+    // Проверяем, является ли событие клавишей вправо
+    else if (event.key === 'ArrowRight') {
+        showNextImage();
+    }
+});
+
+function showNextImage() {
+    // Если у вас уже есть кнопка для переключения вперед, то вызываем ее событие click
+    if (elLightboxControlNext) {
+        elLightboxControlNext.click();
+    }
+}
+
+function showPrevImage() {
+    // Если у вас уже есть кнопка для переключения назад, то вызываем ее событие click
+    if (elLightboxControlPrev) {
+        elLightboxControlPrev.click();
+    }
+}
+
