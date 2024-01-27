@@ -50,7 +50,7 @@ elsImgShowcaseThumbnailButton.forEach(function (elButton) {
 
 // Lightbox Modal open and close
 const elLightbox = document.querySelector('.js-lightbox');
-const elCloseLightbox = document.querySelector('.js-close___lightbox');
+const elCloseLightbox = document.querySelector('.js-close__lightbox');
 const elLightboxOpener = document.querySelector('.js-lightbox__toggler');
 
 if (elLightboxOpener) {
@@ -207,5 +207,52 @@ function showPrevImage() {
     if (elLightboxControlPrev) {
         elLightboxControlPrev.click();
     }
+}
+
+
+const elAddToCartLink = document.querySelector('.js-add-to-cart-link');
+const elShoppingCartModal = document.querySelector('.site-header__cart-modal');
+const elProductTitle = document.querySelector('.js-product__title');
+const elProductPrice = document.querySelector('.js-product__price');
+const elProductQuantity = document.querySelector('.js-product__quantity');
+
+// Example: Assuming you have product information in your HTML
+const productInfo = {
+  title: elProductTitle.textContent,
+  price: elProductPrice.textContent,
+  // You may need to adjust this based on your actual structure for quantity input
+  quantity: elProductQuantity.value || 1,
+};
+
+// Add to Cart link click event
+if (elAddToCartLink) {
+  elAddToCartLink.addEventListener('click', function (evt) {
+    evt.preventDefault();
+
+    // Call a function to add the selected item to the shopping cart
+    addToCart(productInfo);
+
+    // You may also want to update the UI to reflect the added item
+    updateCartUI();
+  });
+}
+
+// Function to add the selected item to the shopping cart
+function addToCart(item) {
+  // Perform the logic to add the item to the shopping cart
+  // You might want to use local storage, an array, or another data structure to store cart items
+  // For example, you could use an array:
+  // shoppingCart.push(item);
+
+  // For the purpose of this example, I'll just log the item to the console
+  console.log('Item added to cart:', item);
+}
+
+// Function to update the shopping cart UI
+function updateCartUI() {
+  // Perform the logic to update the UI, e.g., show the added item in the cart modal
+  // You might update the cart count, total price, etc.
+  // For example, you could update the modal content:
+  // elShoppingCartModal.innerHTML = 'Updated content';
 }
 
