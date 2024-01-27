@@ -169,8 +169,8 @@ img {
   margin-bottom: 16px;
 }
 
-/* ITEM-SHOPPING-CART-PRODUCTS */
-.item-shopping-cart-products {
+/* item-shopping-cart-product */
+.item-shopping-cart-product {
   display: flex;
   align-items: flex-start;
 }
@@ -219,7 +219,7 @@ img {
   opacity: 0.6;
 }
 
-.item-shopping-cart-products__remove-icon {
+.item-shopping-cart-product__remove-icon {
   display: block;
   width: 14px;
   height: 16px;
