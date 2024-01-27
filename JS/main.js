@@ -256,3 +256,15 @@ function updateCartUI() {
   // elShoppingCartModal.innerHTML = 'Updated content';
 }
 
+// Remove open calss on press key ESC
+function escRemove() {
+    if (elLightbox) {
+        elLightbox.classList.remove(modifiers.lightboxOpen)
+    }
+};
+document.addEventListener('keydown', function (event) {
+    // Check if the pressed key is 'Escape'
+    if (event.key === 'Escape') {
+        escRemove();
+    }
+});
