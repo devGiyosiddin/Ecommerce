@@ -311,3 +311,38 @@ if (elAddtoCartBtn) {
 // const elProductQuantity = document.querySelector('.js-product__quantity');
 // const elProductTitle = document.querySelector('.js-product__title');
 // const elProductPrice = document.querySelector('.js-product__price');
+
+
+/* 
+<!-- has-items -->
+                <div class="shopping-cart__content">
+                  <ul class="shopping-cart__products">
+                    <li class="shopping-cart__product-item">
+                      <div class="item-shopping-cart-product">
+                        <img class="item-shopping-cart-product__img" src="img/shopping-cart-item-img.jpg" alt="Fall limited edition sneakers photo" width="50" height="50" >
+                        <div class="item-shopping-cart-product__info">
+                          <div class="item-shopping-cart-product__name">Fall Limited Edition Sneakers</div>
+                          <div class="item-shopping-cart-product__cost">$125.00 x 3 <b class="item-shopping-cart-product__subtotal">$375.00</b></div>
+                        </div>
+                        <button class="item-shopping-cart-product__remove-button" type="button" aria-label="remove item">
+                          <svg class="item-shopping-cart-product__remove-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="16" fill="none">
+                            <path fill="currentColor" fill-rule="evenodd"
+                            d="M0 2.625V1.75C0 1.334.334 1 .75 1h3.5l.294-.584A.741.741 0 0 1 5.213 0h3.571a.75.75 0 0 1 .672.416L9.75 1h3.5c.416 0 .75.334.75.75v.875a.376.376 0 0 1-.375.375H.375A.376.376 0 0 1 0 2.625Zm13 1.75V14.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 1 14.5V4.375C1 4.169 1.169 4 1.375 4h11.25c.206 0 .375.169.375.375ZM4 6c.275 0 .5.225.5.5v7c0 .275-.225.5-.5.5a.501.501 0 0 1-.5-.5v-7c0-.275.225-.5.5-.5Zm3.5.5c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7ZM10 6c.275 0 .5.225.5.5v7c0 .275-.225.5-.5.5a.501.501 0 0 1-.5-.5v-7c0-.275.225-.5.5-.5Z"
+                            clip-rule="evenodd" />
+                            <mask id="a" width="14" height="16" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:luminance">
+                              <path fill="#fff" fill-rule="evenodd"
+                              d="M0 2.625V1.75C0 1.334.334 1 .75 1h3.5l.294-.584A.741.741 0 0 1 5.213 0h3.571a.75.75 0 0 1 .672.416L9.75 1h3.5c.416 0 .75.334.75.75v.875a.376.376 0 0 1-.375.375H.375A.376.376 0 0 1 0 2.625Zm13 1.75V14.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 1 14.5V4.375C1 4.169 1.169 4 1.375 4h11.25c.206 0 .375.169.375.375ZM4 6c.275 0 .5.225.5.5v7c0 .275-.225.5-.5.5a.501.501 0 0 1-.5-.5v-7c0-.275.225-.5.5-.5Zm3.5.5c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7ZM10 6c.275 0 .5.225.5.5v7c0 .275-.225.5-.5.5a.501.501 0 0 1-.5-.5v-7c0-.275.225-.5.5-.5Z"
+                              clip-rule="evenodd" />
+                            </mask>
+                          </svg>
+                        </button>
+                      </div>
+                    </li>
+                  </ul>
+                  <a href="#" class="button button--block">
+                    <span class="button__inner">
+                      <span class="button__text">Checkout</span>
+                    </span>
+                  </a>
+                </div>
+*/
