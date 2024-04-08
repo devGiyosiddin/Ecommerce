@@ -33,7 +33,6 @@
         <div class="site-header__card">
           <!-- Site-header__card-empty -->
           <a href="#" class="site-header__card-link js-site-header__card-link" aria-label="Shopping cart">
-            <span class="site-header__cart-product-count">3</span>
             <svg class="site-header__cart-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="20">
               <path fill="currentColor" fill-rule="evenodd"
               d="M3.863 3.641h17.062c.583 0 1.01.55.87 1.114l-1.822 7.283a.896.896 0 0 1-.817.677l-14.321.842c.256.598.849 1.01 1.53 1.01h10.008a2.72 2.72 0 0 1 2.717 2.716A2.72 2.72 0 0 1 16.373 20c-1.878 0-3.197-1.872-2.555-3.642H8.913C9.556 18.13 8.233 20 6.358 20 4.1 20 2.83 17.385 4.22 15.611c-.77-.61-1.218-1.508-1.29-2.336l-.98-10.909v.001c.072.796.169 1.876-.051-.575H.896A.896.896 0 0 1 .896 0h1.82c.465 0 .852.354.894.816l.253 2.825Zm1.57 13.642a.926.926 0 0 0 1.85 0 .926.926 0 0 0-1.85 0Zm10.94.925a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm-11.78-6.432 13.801-.811 1.383-5.531H4.024l.57 6.342Z"
@@ -48,10 +47,9 @@
               <div class="shopping-cart__header">
                 <h2 class="shopping-cart__title">Cart</h2>
               </div>
-              <div class="shopping-cart__inner">
+              <div class="shopping-cart__inner js-shopping-cart__inner">
                 <!-- Empty -->
                 <div class="shopping-cart__empty js-shopping-cart__empty">Your cart is empty.</div>
-                
               </div>
             </section>
           </div>
@@ -124,7 +122,7 @@
             <h1 class="product-info__title js-product__title">Fall Limited Edition Sneakers</h1>
             <p class="product-info__description">These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer.</p>
             <div class="product-info__price-wrapper">
-              <b class="product-info__price js-product__price">$125.00</b>
+              <b class="product-info__price js-product__price">$<span class="js-product__price-number">125.00</span></b>
               <span class="badge">50%</span>
             </div>
             <del class="product-info__old-price">$250.00</del>
