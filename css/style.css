@@ -14,7 +14,7 @@
 @font-face {
   font-family: "Kumbh Sans";
   src: url("../fonts/KumbhSans-Regular.woff2") format("woff2"),
-    url("../fonts/KumbhSans-Regular.woff") format("woff");
+  url("../fonts/KumbhSans-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -23,7 +23,7 @@
 @font-face {
   font-family: "Kumbh Sans";
   src: url("../fonts/KumbhSans-Bold.woff2") format("woff2"),
-    url("../fonts/KumbhSans-Bold.woff") format("woff");
+  url("../fonts/KumbhSans-Bold.woff") format("woff");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -307,10 +307,10 @@ img {
 }
 
 .sitenav__list {
-    display: flex;
-    padding: 0;
-    margin: 0;
-    list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 .sitenav__item {
@@ -319,15 +319,15 @@ img {
 }
 
 .sitenav__item:not(:last-child) {
-    margin-right: 32px;
+  margin-right: 32px;
 }
 
 .sitenav__link {
-    display: block;
-    text-decoration: none;
-    font-size: 15px;
-    line-height: 26px;
-    color: var(--text-color);
+  display: block;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 26px;
+  color: var(--text-color);
 }
 .sitenav__link:hover {
   color: var(--text-dark);
@@ -593,7 +593,7 @@ img {
 
 .img-showcase__thumbnails {
   scrollbar-color: var(--accent-color-hover) var(--divider-bg); /* Foreground, Background */
- 
+  
 }
 .img-showcase__thumbnails::-webkit-scrollbar {
   width: 10px; /* Mostly for vertical scrollbars */
@@ -781,12 +781,53 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  /* .product-info__price-wrapper {
-    flex-direction: column;
+  .site-header__container {
+    padding:19px 0 30px;
   }
-  .product-info__old-price {
-    margin-bottom: 16px;
-  } */
+  .sitenav-button {
+    display: block;
+    margin-right: 16px;
+  }
+  .sitenav-menu-close {
+    min-width: 14px;
+    background-image: url("../img/sitenav-menu-close.svg");
+  }
+  .sitenav__list {
+    position: fixed;
+    width: 70vw;
+    height: 100vh;
+    top: 0;
+    left: -150%;
+    flex-direction: column;
+    transition: all .5s;
+    padding: 140px 24px;
+    margin-top: 0;
+    z-index: 10;
+  }
+  .sitenav__list--active {
+    left: 0;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+  }
+  .sitenav__list--active .sitenav__link {
+    color: #000;
+  }
+  .sitenav__item {
+    padding: 0;
+    margin: 0;
+  }
+  .sitenav__item:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  .sitenav__link {
+    font-size: 18px;
+  }
+  .site-header__cart-modal--open {
+    width: 50vw;
+    right: 5vw;
+  }
 }
 
 @media screen and (max-width: 576px) {
@@ -831,8 +872,62 @@ img {
   .img-showcase__control--next {
     right: 8vw;
   }
+  .product-info__price-wrapper {
+    display: inline-block;
+  }
+  .product-info__old-price {
+    display: inline-block;
+    float: right;
+  }
+  .product-info__cart-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .product-info__quantity-wrapper{
+    margin-right: 0;
+    height: 56px;
+    margin-bottom: 16px;
+  }
+  .product-info__quantity-wrapper {
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  .sitenav__list--active {
+    align-items: start;
+  }
+  .site-header__container {
+    position: static;
+  }
+  .site-header__cart-modal--open {
+    width: 90vw;
+    right: 5vw;
+    left: 5vw;
+  }
+  .product-info__manufacturer {
+    font-size: 12px;
+    margin-bottom: 16px;
+  }
+  .product-info__title {
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+}
+@media screen and (max-width: 468px) {
+  .site-header__logo {
+    margin-right: 0;
+  }
+  .site-header__card {
+    margin: 0 16px;
+  }
 }
 
-@media screen and (max-width: 450px) {
-  
+@media screen and (max-width: 320px) {
+  .product-info {
+    display: flex;
+    flex-direction: column;
+  }
+  .button--wide {
+    min-width: 100%;
+  }
 }
