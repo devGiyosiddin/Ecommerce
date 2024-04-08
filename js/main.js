@@ -170,6 +170,71 @@ if (elLightboxControlPrev) {
 };
 
 
+// Lightbox Controls - 2ND
+// Next
+const elLightboxControlNext2 = document.querySelector('.js-img-showcase__control--next2');
+const elImgShowcaseThumbails = document.querySelector('.js-img-showcase__thumbnails');
+
+if (elLightboxControlNext2) {
+    elLightboxControlNext2.addEventListener('click', function () {
+
+        // Find active li Element
+        const elActiveitem = elImgShowcaseThumbails.querySelector('.img-showcase__thumbnail--active');
+
+        // Remove active class from prev element
+        elActiveitem.classList.remove(modifiers.imgThumbnailActive);
+
+        let elNextActiveItem;
+
+        // Check there are any element after active element
+        if (elActiveitem.nextElementSibling == null) {
+            elNextActiveItem = elsImgShowcaseThumbnail[0];
+        }
+        else {
+            elNextActiveItem = elActiveitem.nextElementSibling;
+        };
+
+        // Add active class to next element
+        elNextActiveItem.classList.add(modifiers.imgThumbnailActive);
+
+        // Get the datasets value of clicked button
+        elImgShowcaseActiveImg.src = elNextActiveItem.querySelector('.js-img-showcase__thumbnail-button').dataset.src;
+        elImgShowcaseActiveImg.srcset = elNextActiveItem.querySelector('.js-img-showcase__thumbnail-button').dataset.srcset;
+    });
+};
+
+// Prev
+const elLightboxControlPrev2 = document.querySelector('.js-img-showcase__control--prev2');
+
+if (elLightboxControlPrev2) {
+    elLightboxControlPrev2.addEventListener('click', function () {
+
+        // Find active li Element
+        const elActiveitem = elImgShowcaseThumbails.querySelector('.img-showcase__thumbnail--active');
+
+        // Remove active class from prev element
+        elActiveitem.classList.remove(modifiers.imgThumbnailActive);
+
+        let elPrevActiveItem;
+
+        // Check there are any element after active element
+        if (elActiveitem.previousElementSibling == null ) {
+            elPrevActiveItem = elsImgShowcaseThumbnail[elsImgShowcaseThumbnail.length -1];
+        }
+        else {
+            elPrevActiveItem = elActiveitem.previousElementSibling;
+        };
+
+        // Add active class to next element
+        elPrevActiveItem.classList.add(modifiers.imgThumbnailActive);
+
+        // Get the datasets value of clicked button
+        elImgShowcaseActiveImg.src = elPrevActiveItem.querySelector('.js-img-showcase__thumbnail-button').dataset.src;
+        elImgShowcaseActiveImg.srcset = elPrevActiveItem.querySelector('.js-img-showcase__thumbnail-button').dataset.srcset;
+    });
+};
+
+
 // Product Count
 const elIncrementButton = document.querySelector('.js-quantity-increment-button');
 const elDecrementButton = document.querySelector('.js-quantity-decrement-button');
