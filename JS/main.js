@@ -234,6 +234,20 @@ if (elLightboxControlPrev2) {
     });
 };
 
+// Remove open class on press key ESC
+function escRemove() {
+    if (elLightbox) {
+        elLightbox.classList.remove(modifiers.lightboxOpen)
+    }
+};
+document.addEventListener('keydown', function (event) {
+    // Check if the pressed key is 'Escape'
+    if (event.key === 'Escape') {
+        escRemove();
+    }
+});
+
+
 
 // Product Count
 const elIncrementButton = document.querySelector('.js-quantity-increment-button');
@@ -286,7 +300,8 @@ function showPrevImage() {
 }
 
 
-/* const elAddToCartLink = document.querySelector('.js-add-to-cart-link');
+// ADD ITEM
+const elAddToCartLink = document.querySelector('.js-add-to-cart-link');
 const elShoppingCartModal = document.querySelector('.site-header__cart-modal');
 const elProductTitle = document.querySelector('.js-product__title');
 const elProductPrice = document.querySelector('.js-product__price');
@@ -332,15 +347,3 @@ function updateCartUI() {
   // elShoppingCartModal.innerHTML = 'Updated content';
 }
 
-// Remove open calss on press key ESC
-function escRemove() {
-    if (elLightbox) {
-        elLightbox.classList.remove(modifiers.lightboxOpen)
-    }
-};
-document.addEventListener('keydown', function (event) {
-    // Check if the pressed key is 'Escape'
-    if (event.key === 'Escape') {
-        escRemove();
-    }
-}); */
