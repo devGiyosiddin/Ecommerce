@@ -302,15 +302,15 @@ function showPrevImage() {
 // ADD ITEM
 const elAddtoCartBtn = document.querySelector('.js-button--wide');
 const elShoppingCartEmpty = document.querySelector('.js-shopping-cart__empty');
+const elProductQuantity = document.querySelector('.js-product__quantity');
+const elProductTitle = document.querySelector('.js-product__title');
+const elProductPrice = document.querySelector('.js-product__price');
 if (elAddtoCartBtn) {
     elAddtoCartBtn.addEventListener('click', function () {
         elShoppingCartEmpty.style.display = 'none';
         console.log('Done');
     });
 };
-// const elProductQuantity = document.querySelector('.js-product__quantity');
-// const elProductTitle = document.querySelector('.js-product__title');
-// const elProductPrice = document.querySelector('.js-product__price');
 
 
 /* 
