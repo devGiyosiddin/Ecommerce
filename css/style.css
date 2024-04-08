@@ -149,6 +149,21 @@ img {
   margin-right: 16px;
 }
 
+
+/* sitenav-menu */
+.sitenav-button {
+  display: none;
+  min-width: 16px;
+  height: 15px;
+  cursor: pointer;
+  border: 0;
+  background-size: contain;
+  background-image: url("../img/sitenav-menu-icon.svg");
+  background-color: transparent;
+  background-repeat: no-repeat;
+  z-index: 11;
+}
+
 /* Badge */
 .badge {
   display: inline-block;
