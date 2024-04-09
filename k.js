@@ -403,10 +403,13 @@ if (elAddtoCartBtn) {
                             elSiteHeaderCartLink.children[1].remove();
                         };
 
-                        // Add empty text when no items
-                        if (elShoppingCartInner.childNodes) {
+                        if (elShoppingCartCount === 0) {
                             elShoppingCartInner.innerHTML = '<div class="shopping-cart__empty js-shopping-cart__empty">Your cart is empty.</div>';
                             elShoppingCartModal.classList.add('shopping-cart--empty');
+                        } else {
+                            // Update product count
+                            const elProductCount = document.querySelector('.site-header__cart-product-count');
+                            elProductCount.textContent = elShoppingCartCount;
                         }
                     });
                 });
