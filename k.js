@@ -5,7 +5,10 @@ const modifiers = {
     sitenavMenuClose: 'sitenav-menu-close',
     sitenavListActive: 'sitenav__list--active',
     bodyHidden: 'body-hidden',
-}
+    shoppingCartEmpty: 'shopping-cart--empty',
+    cartEmpty: 'shopping-cart--empty',
+    productCartCount: 'site-header__cart-product-count',
+};
 
 // FUNCTIONS
 
@@ -15,11 +18,15 @@ function addClassToParent(el, className) {
     };
 };
 function addClass(el, classname) {
-    el.classList.add(classname);
-}
+    if (el) {
+        el.classList.add(classname);
+    };
+};
 function removeClass(el, classname) {
-    el.classList.remove(classname);
-}
+    if (el) {
+        el.classList.remove(classname);
+    };
+};
 function toggleClass(el, className) {
     if (el) {
         el.classList.toggle(className);
@@ -29,27 +36,27 @@ function toggleClass(el, className) {
 function deactivateImgShowcaseThumbnails () {
     // Deactivate all active items
     elsImgShowcaseThumbnailButton.forEach(function (elImgShowcaseThumbnailButton) {
-        elImgShowcaseThumbnailButton.parentElement.classList.remove(modifiers.imgThumbnailActive)
-    })
-}
+        elImgShowcaseThumbnailButton.parentElement.classList.remove(modifiers.imgThumbnailActive);
+    });
+};
 
 function deactivateLightboxActiveThumbnail() {
     // Deactivate all active items
     elslLightboxThumbnailButton.forEach(function (elLightboxThumbnailButton) {
-        elLightboxThumbnailButton.parentElement.classList.remove(modifiers.imgThumbnailActive)
-    })
-}
+        elLightboxThumbnailButton.parentElement.classList.remove(modifiers.imgThumbnailActive);
+    });
+};
 
 function escRemove() {
     if (elLightbox) {
         elLightbox.classList.remove(modifiers.lightboxOpen);
-    }
+    };
 }; 
 
 function showNextImage() {
     // Если у вас уже есть кнопка для переключения вперед, то вызываем ее событие click
-    if (elLightboxControlNext) {
-        elLightboxControlNext.click();
+    if (elLightboxControlNextbtn) {
+        elLightboxControlNextbtn.click();
     };
 };
 
@@ -63,9 +70,85 @@ function showPrevImage() {
 function openShoppingCart() {
     elSiteHeaderCartLink.addEventListener('click', function(evt) {
         evt.preventDefault();
-        toggleClass(elSiteHeaderCartModal, modifiers.siteHadercartModalOpen)
+        toggleClass(elSiteHeaderCartModal, modifiers.siteHadercartModalOpen);
     });
 };
+
+// Lightbox Controls function
+function nextBtn(btn, acttiveItem, box, boxActiveImg) {
+    if (btn) {
+        btn.addEventListener('click', function () {
+            // Find active li Element
+            const elActiveitem = acttiveItem.querySelector('.img-showcase__thumbnail--active');
+            
+            if (elActiveitem) {
+                // Remove active class from prev element
+                removeClass(elActiveitem, modifiers.imgThumbnailActive);
+                
+                // Check there are any element after active element
+                let elNextActiveItem;
+                
+                if (elActiveitem.nextElementSibling == null || elActiveitem.nextElementSibling == undefined) {
+                    elNextActiveItem = box[0];
+                }
+                else {
+                    elNextActiveItem = elActiveitem.nextElementSibling;
+                };
+                
+                // Add active class to next element
+                addClass(elNextActiveItem, modifiers.imgThumbnailActive);
+                
+                // Get the datasets value of clicked button
+                boxActiveImg.src = elNextActiveItem.querySelector('.js-lightbox-img-showcase__thumbnail-button').dataset.src;
+                boxActiveImg.srcset = elNextActiveItem.querySelector('.js-lightbox-img-showcase__thumbnail-button').dataset.srcset;
+            } else {
+                // Если активный элемент не найден, делаем первый элемент активным
+                const firstItem = box[0];
+                addClass(firstItem, modifiers.imgThumbnailActive);
+                boxActiveImg.src = firstItem.querySelector('.js-lightbox-img-showcase__thumbnail-button').dataset.src;
+                boxActiveImg.srcset = firstItem.querySelector('.js-lightbox-img-showcase__thumbnail-button').dataset.srcset;
+            }
+        });
+    };
+};
+
+function prevBtn(btn, activeItem, box, boxActiveImg) {
+    if (btn) {
+        btn.addEventListener('click', function () {
+            // Find active li Element
+            const elActiveitem = activeItem.querySelector('.img-showcase__thumbnail--active');
+            
+            if (elActiveitem) {
+                // Remove active class from prev element
+                removeClass(elActiveitem, modifiers.imgThumbnailActive);
+                
+                // Check there are any element before active element
+                let elPrevActiveItem;
+                
+                if (elActiveitem.previousElementSibling == null) {
+                    elPrevActiveItem = box[box.length -1];
+                }
+                else {
+                    elPrevActiveItem = elActiveitem.previousElementSibling;
+                };
+                
+                // Add active class to previous element
+                addClass(elPrevActiveItem, modifiers.imgThumbnailActive);
+                
+                // Get the datasets value of clicked button
+                boxActiveImg.src = elPrevActiveItem.querySelector('.js-lightbox-img-showcase__thumbnail-button').dataset.src;
+                boxActiveImg.srcset = elPrevActiveItem.querySelector('.js-lightbox-img-showcase__thumbnail-button').dataset.srcset;
+            } else {
+                // Если активный элемент не найден, делаем последний элемент активным
+                const lastItem = box[box.length - 1];
+                addClass(lastItem, modifiers.imgThumbnailActive);
+                boxActiveImg.src = lastItem.querySelector('.js-lightbox-img-showcase__thumbnail-button').dataset.src;
+                boxActiveImg.srcset = lastItem.querySelector('.js-lightbox-img-showcase__thumbnail-button').dataset.srcset;
+            }
+        });
+    };
+};
+
 
 
 // Open shopping cart
@@ -95,6 +178,7 @@ const elsImgShowcaseThumbnail = elProductPageGaleery.querySelectorAll('.js-img-s
 const elsImgShowcaseThumbnailButton = elProductPageGaleery.querySelectorAll('.js-img-showcase__thumbnail-button');
 // Lightbox Img Showcase
 const elLightboxActiveImg = document.querySelector('.js-lightbox-img-showcase__acitve-img');
+const elImgShowcaseThumbails = document.querySelector('.js-img-showcase__thumbnails');
 const elslLightboxThumbnail = document.querySelectorAll('.js-lightbox-img-showcase__thumbnail');
 const elslLightboxThumbnailButton = document.querySelectorAll('.js-lightbox-img-showcase__thumbnail-button');
 
@@ -109,9 +193,9 @@ elsImgShowcaseThumbnailButton.forEach(function (elbtn) {
         elImgShowcaseActiveImg.srcset = evt.target.dataset.srcset;
         
         deactivateImgShowcaseThumbnails();
-
+        
         // Add active class to clicked item
-        addClassToParent(elbtn, modifiers.imgThumbnailActive)
+        addClassToParent(elbtn, modifiers.imgThumbnailActive);
     });
 });
 
@@ -124,9 +208,9 @@ elslLightboxThumbnailButton.forEach(function (elBtn) {
         elLightboxActiveImg.srcset = evt.target.dataset.srcset;
         
         deactivateLightboxActiveThumbnail();
-
+        
         // Add active class to clicked item
-        addClassToParent(elBtn, modifiers.imgThumbnailActive)
+        addClassToParent(elBtn, modifiers.imgThumbnailActive);
     });
 });
 
@@ -138,143 +222,35 @@ const elLightboxOpener = document.querySelector('.js-lightbox__toggler');
 
 if (elLightboxOpener) {
     elLightboxOpener.addEventListener('click', function () {
-        addClass(elLightbox, modifiers.lightboxOpen)
+        addClass(elLightbox, modifiers.lightboxOpen);
     });
 };
 
 if (elCloseLightbox) {
     elCloseLightbox.addEventListener('click', function () {
-        removeClass(elLightbox, modifiers.lightboxOpen)
-    })
-}
-
-
-// Lightbox Controls
-// Next
-const elLightboxControlNext = document.querySelector('.js-img-showcase__control--next');
-
-if (elLightboxControlNext) {
-    elLightboxControlNext.addEventListener('click', function () {
-        
-        // Find active li Element
-        const elActiveitem = elLightbox.querySelector('.img-showcase__thumbnail--active');
-        
-        // Remove active class from prev element
-        elActiveitem.classList.remove(modifiers.imgThumbnailActive);
-        
-        let elNextActiveItem;
-        
-        // Check there are any element after active element
-        if (elActiveitem.nextElementSibling == null) {
-            elNextActiveItem = elslLightboxThumbnail[0];
-        }
-        else {
-            elNextActiveItem = elActiveitem.nextElementSibling;
-        };
-        
-        // Add active class to next element
-        elNextActiveItem.classList.add(modifiers.imgThumbnailActive);
-        
-        // Get the datasets value of clicked button
-        elLightboxActiveImg.src = elNextActiveItem.querySelector('.js-lightbox-img-showcase__thumbnail-button').dataset.src;
-        elLightboxActiveImg.srcset = elNextActiveItem.querySelector('.js-lightbox-img-showcase__thumbnail-button').dataset.srcset;
+        removeClass(elLightbox, modifiers.lightboxOpen);
     });
 };
 
-// Prev
+
+const elLightboxControlNextbtn = document.querySelector('.js-img-showcase__control--next');
+const elImgShowcaseControlNextbtn = document.querySelector('.js-img-showcase__control--next2');
 const elLightboxControlPrev = document.querySelector('.js-img-showcase__control--prev');
-
-if (elLightboxControlPrev) {
-    elLightboxControlPrev.addEventListener('click', function () {
-        
-        // Find active li Element
-        const elActiveitem = elLightbox.querySelector('.img-showcase__thumbnail--active');
-        
-        // Remove active class from prev element
-        elActiveitem.classList.remove(modifiers.imgThumbnailActive);
-        
-        let elPrevActiveItem;
-        
-        // Check there are any element after active element
-        if (elActiveitem.previousElementSibling == null ) {
-            elPrevActiveItem = elslLightboxThumbnail[elslLightboxThumbnail.length -1];
-        }
-        else {
-            elPrevActiveItem = elActiveitem.previousElementSibling;
-        };
-        
-        // Add active class to next element
-        elPrevActiveItem.classList.add(modifiers.imgThumbnailActive);
-        
-        // Get the datasets value of clicked button
-        elLightboxActiveImg.src = elPrevActiveItem.querySelector('.js-lightbox-img-showcase__thumbnail-button').dataset.src;
-        elLightboxActiveImg.srcset = elPrevActiveItem.querySelector('.js-lightbox-img-showcase__thumbnail-button').dataset.srcset;
-    });
-};
+const elImgShowcaseControlPrev = document.querySelector('.js-img-showcase__control--prev2');
 
 
-// Lightbox Controls - 2ND
-// Next
-const elLightboxControlNext2 = document.querySelector('.js-img-showcase__control--next2');
-const elImgShowcaseThumbails = document.querySelector('.js-img-showcase__thumbnails');
+// ******************* Lightbox ****************
+// Next-btn
+nextBtn(elLightboxControlNextbtn, elLightbox, elslLightboxThumbnail, elLightboxActiveImg);
+// Prev-btn
+prevBtn(elLightboxControlPrev, elLightbox, elslLightboxThumbnail, elLightboxActiveImg);
 
-if (elLightboxControlNext2) {
-    elLightboxControlNext2.addEventListener('click', function () {
-        
-        // Find active li Element
-        const elActiveitem = elImgShowcaseThumbails.querySelector('.img-showcase__thumbnail--active');
-        
-        // Remove active class from prev element
-        elActiveitem.classList.remove(modifiers.imgThumbnailActive);
-        
-        let elNextActiveItem;
-        
-        // Check there are any element after active element
-        if (elActiveitem.nextElementSibling == null) {
-            elNextActiveItem = elsImgShowcaseThumbnail[0];
-        }
-        else {
-            elNextActiveItem = elActiveitem.nextElementSibling;
-        };
-        
-        // Add active class to next element
-        elNextActiveItem.classList.add(modifiers.imgThumbnailActive);
-        
-        // Get the datasets value of clicked button
-        elImgShowcaseActiveImg.src = elNextActiveItem.querySelector('.js-img-showcase__thumbnail-button').dataset.src;
-        elImgShowcaseActiveImg.srcset = elNextActiveItem.querySelector('.js-img-showcase__thumbnail-button').dataset.srcset;
-    });
-};
+// ******************* Img-showcase ****************
+// Next-btn
+nextBtn(elImgShowcaseControlNextbtn, elLightbox, elslLightboxThumbnail, elImgShowcaseActiveImg);
+// Prev-btn
+prevBtn(elImgShowcaseControlPrev, elLightbox, elslLightboxThumbnail, elImgShowcaseActiveImg);
 
-// Prev
-const elLightboxControlPrev2 = document.querySelector('.js-img-showcase__control--prev2');
-if (elLightboxControlPrev2) {
-    elLightboxControlPrev2.addEventListener('click', function () {
-        
-        // Find active li Element
-        const elActiveitem = elImgShowcaseThumbails.querySelector('.img-showcase__thumbnail--active');
-        
-        // Remove active class from prev element
-        elActiveitem.classList.remove(modifiers.imgThumbnailActive);
-        
-        let elPrevActiveItem;
-        
-        // Check there are any element after active element
-        if (elActiveitem.previousElementSibling == null ) {
-            elPrevActiveItem = elsImgShowcaseThumbnail[elsImgShowcaseThumbnail.length -1];
-        }
-        else {
-            elPrevActiveItem = elActiveitem.previousElementSibling;
-        };
-        
-        // Add active class to next element
-        elPrevActiveItem.classList.add(modifiers.imgThumbnailActive);
-        
-        // Get the datasets value of clicked button
-        elImgShowcaseActiveImg.src = elPrevActiveItem.querySelector('.js-img-showcase__thumbnail-button').dataset.src;
-        elImgShowcaseActiveImg.srcset = elPrevActiveItem.querySelector('.js-img-showcase__thumbnail-button').dataset.srcset;
-    });
-};
 
 // Remove open class on press key ESC
 document.addEventListener('keydown', function (event) {
@@ -283,7 +259,6 @@ document.addEventListener('keydown', function (event) {
         escRemove()
     }
 });
-
 
 
 // Product Count
@@ -323,9 +298,7 @@ document.addEventListener('keydown', function (event) {
 });
 
 
-
-
-// ADD ITEM
+// ADD ITEM TO CART
 const elAddtoCartBtn = document.querySelector('.js-button--wide');
 const elShoppingCartInner = document.querySelector('.js-shopping-cart__inner');
 const elShoppingCartCount = document.querySelector('.js-shopping-cart__inner').childElementCount;
@@ -338,7 +311,7 @@ if (elAddtoCartBtn) {
             const elProductQuantity = parseInt(document.querySelector('.js-product__quantity').textContent, 10);
             const elProductPriceNumber = document.querySelector('.js-product__price-number').textContent;
             
-            elShoppingCartModal.classList.remove('shopping-cart--empty');
+            removeClass(elShoppingCartModal, modifiers.shoppingCartEmpty);
             const lastPrice = elProductPriceNumber * elProductQuantity;
             
             elShoppingCartInner.innerHTML = `
@@ -377,40 +350,43 @@ if (elAddtoCartBtn) {
             
             // Update cart link
             const count = document.createElement('span');
-            count.classList.add('site-header__cart-product-count');
+            addClass(count, modifiers.productCartCount);
             elSiteHeaderCartLink.appendChild(count);
             
             // Update product count
             const elProductCount = document.querySelector('.site-header__cart-product-count');
             elProductCount.textContent = elShoppingCartCount;
             
+            // Update quatity value
+            elProductQt.textContent = '0'
+
             // Added item on shopping cart
             const elAddedItem = document.querySelector('.shopping-cart__product-item');
             if (elAddedItem) {
                 
                 const elsShoppingCartRemoveBtn = document.querySelectorAll('.js-shopping-cart__remove-button');
                 elsShoppingCartRemoveBtn.forEach(function (removeBtn) {
-
+                    
                     // Remove item
                     removeBtn.addEventListener('click', function (evt) {
                         let elParentItem = evt.target.parentNode.parentNode.parentNode.parentNode.parentElement.parentNode;
                         // Remove item from DOM
                         elParentItem.remove();
-
+                        
                         // Update shopping cart count
                         const elShoppingCartCount = document.querySelector('.js-shopping-cart__inner').childElementCount;
                         if(elShoppingCartCount === 0) {
                             elSiteHeaderCartLink.children[1].remove();
                         };
-
+                        
                         if (elShoppingCartCount === 0) {
                             elShoppingCartInner.innerHTML = '<div class="shopping-cart__empty js-shopping-cart__empty">Your cart is empty.</div>';
-                            elShoppingCartModal.classList.add('shopping-cart--empty');
+                            addClass(elShoppingCartModal, modifiers.cartEmpty);
                         } else {
                             // Update product count
                             const elProductCount = document.querySelector('.site-header__cart-product-count');
                             elProductCount.textContent = elShoppingCartCount;
-                        }
+                        };
                     });
                 });
             };    
