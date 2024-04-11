@@ -75,11 +75,11 @@ function openShoppingCart() {
 };
 
 // Lightbox Controls function
-function nextBtn(btn, actIveItem, box, boxActiveImg) {
+function nextBtn(btn, acttiveItem, box, boxActiveImg) {
     if (btn) {
         btn.addEventListener('click', function () {
             // Find active li Element
-            const elActiveitem = actIveItem.querySelector('.img-showcase__thumbnail--active');
+            const elActiveitem = acttiveItem.querySelector('.img-showcase__thumbnail--active');
             
             if (elActiveitem) {
                 // Remove active class from prev element
@@ -88,8 +88,8 @@ function nextBtn(btn, actIveItem, box, boxActiveImg) {
                 // Check there are any element after active element
                 let elNextActiveItem;
                 
-                if (elActiveitem.nextElementSibling == null) {
-                    // elNextActiveItem = box[0];
+                if (elActiveitem.nextElementSibling == null || elActiveitem.nextElementSibling == undefined) {
+                    elNextActiveItem = box[0];
                     console.log('no next element');
                 }
                 else {
@@ -114,11 +114,11 @@ function nextBtn(btn, actIveItem, box, boxActiveImg) {
     };
 };
 
-function prevBtn(btn, actIveItem, box, boxActiveImg) {
+function prevBtn(btn, activeItem, box, boxActiveImg) {
     if (btn) {
         btn.addEventListener('click', function () {
             // Find active li Element
-            const elActiveitem = actIveItem.querySelector('.img-showcase__thumbnail--active');
+            const elActiveitem = activeItem.querySelector('.img-showcase__thumbnail--active');
             
             if (elActiveitem) {
                 // Remove active class from prev element
@@ -180,6 +180,7 @@ const elsImgShowcaseThumbnail = elProductPageGaleery.querySelectorAll('.js-img-s
 const elsImgShowcaseThumbnailButton = elProductPageGaleery.querySelectorAll('.js-img-showcase__thumbnail-button');
 // Lightbox Img Showcase
 const elLightboxActiveImg = document.querySelector('.js-lightbox-img-showcase__acitve-img');
+const elImgShowcaseThumbails = document.querySelector('.js-img-showcase__thumbnails');
 const elslLightboxThumbnail = document.querySelectorAll('.js-lightbox-img-showcase__thumbnail');
 const elslLightboxThumbnailButton = document.querySelectorAll('.js-lightbox-img-showcase__thumbnail-button');
 
@@ -248,7 +249,7 @@ prevBtn(elLightboxControlPrev, elLightbox, elslLightboxThumbnail, elLightboxActi
 
 // ******************* Img-showcase ****************
 // Next-btn
-nextBtn(elImgShowcaseControlNextbtn,elImgShowcaseThumbails, elsImgShowcaseThumbnail, elImgShowcaseActiveImg);
+nextBtn(elImgShowcaseControlNextbtn, elImgShowcaseThumbails, elsImgShowcaseThumbnail, elImgShowcaseActiveImg);
 // Prev-btn
 prevBtn(elImgShowcaseControlPrev, elImgShowcaseThumbails, elsImgShowcaseThumbnail, elImgShowcaseActiveImg);
 
