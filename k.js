@@ -75,11 +75,11 @@ function openShoppingCart() {
 };
 
 // Lightbox Controls function
-function nextBtn(btn, box, boxActiveImg) {
+function nextBtn(btn, actIveItem, box, boxActiveImg) {
     if (btn) {
         btn.addEventListener('click', function () {
             // Find active li Element
-            const elActiveitem = elLightbox.querySelector('.img-showcase__thumbnail--active');
+            const elActiveitem = actIveItem.querySelector('.img-showcase__thumbnail--active');
             
             if (elActiveitem) {
                 // Remove active class from prev element
@@ -89,9 +89,11 @@ function nextBtn(btn, box, boxActiveImg) {
                 let elNextActiveItem;
                 
                 if (elActiveitem.nextElementSibling == null) {
-                    elNextActiveItem = box[0];
+                    // elNextActiveItem = box[0];
+                    console.log('no next element');
                 }
                 else {
+                    console.log('next element exist');
                     elNextActiveItem = elActiveitem.nextElementSibling;
                 };
                 
@@ -112,11 +114,11 @@ function nextBtn(btn, box, boxActiveImg) {
     };
 };
 
-function prevBtn(btn, box, boxActiveImg) {
+function prevBtn(btn, actIveItem, box, boxActiveImg) {
     if (btn) {
         btn.addEventListener('click', function () {
             // Find active li Element
-            const elActiveitem = elLightbox.querySelector('.img-showcase__thumbnail--active');
+            const elActiveitem = actIveItem.querySelector('.img-showcase__thumbnail--active');
             
             if (elActiveitem) {
                 // Remove active class from prev element
@@ -232,25 +234,23 @@ if (elCloseLightbox) {
 };
 
 
-
 const elLightboxControlNextbtn = document.querySelector('.js-img-showcase__control--next');
 const elImgShowcaseControlNextbtn = document.querySelector('.js-img-showcase__control--next2');
-const elImgShowcaseThumbails = document.querySelector('.js-img-showcase__thumbnails');
 const elLightboxControlPrev = document.querySelector('.js-img-showcase__control--prev');
 const elImgShowcaseControlPrev = document.querySelector('.js-img-showcase__control--prev2');
 
 
 // ******************* Lightbox ****************
 // Next-btn
-nextBtn(elLightboxControlNextbtn, elslLightboxThumbnail, elLightboxActiveImg);
+nextBtn(elLightboxControlNextbtn, elLightbox, elslLightboxThumbnail, elLightboxActiveImg);
 // Prev-btn
-prevBtn(elLightboxControlPrev, elslLightboxThumbnail, elLightboxActiveImg);
+prevBtn(elLightboxControlPrev, elLightbox, elslLightboxThumbnail, elLightboxActiveImg);
 
 // ******************* Img-showcase ****************
 // Next-btn
-nextBtn(elImgShowcaseControlNextbtn, elImgShowcaseThumbails, elImgShowcaseActiveImg);
+nextBtn(elImgShowcaseControlNextbtn, elsImgShowcaseThumbnail, elImgShowcaseActiveImg);
 // Prev-btn
-prevBtn(elImgShowcaseControlPrev, elImgShowcaseThumbails, elImgShowcaseActiveImg);
+prevBtn(elImgShowcaseControlPrev, elsImgShowcaseThumbnail, elImgShowcaseActiveImg);
 
 
 // Remove open class on press key ESC
@@ -358,6 +358,9 @@ if (elAddtoCartBtn) {
             const elProductCount = document.querySelector('.site-header__cart-product-count');
             elProductCount.textContent = elShoppingCartCount;
             
+            // Update quatity value
+            elProductQt.textContent = '0'
+
             // Added item on shopping cart
             const elAddedItem = document.querySelector('.shopping-cart__product-item');
             if (elAddedItem) {
