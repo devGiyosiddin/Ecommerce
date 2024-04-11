@@ -90,10 +90,8 @@ function nextBtn(btn, acttiveItem, box, boxActiveImg) {
                 
                 if (elActiveitem.nextElementSibling == null || elActiveitem.nextElementSibling == undefined) {
                     elNextActiveItem = box[0];
-                    console.log('no next element');
                 }
                 else {
-                    console.log('next element exist');
                     elNextActiveItem = elActiveitem.nextElementSibling;
                 };
                 
@@ -249,9 +247,9 @@ prevBtn(elLightboxControlPrev, elLightbox, elslLightboxThumbnail, elLightboxActi
 
 // ******************* Img-showcase ****************
 // Next-btn
-nextBtn(elImgShowcaseControlNextbtn, elImgShowcaseThumbails, elsImgShowcaseThumbnail, elImgShowcaseActiveImg);
+nextBtn(elImgShowcaseControlNextbtn, elLightbox, elslLightboxThumbnail, elImgShowcaseActiveImg);
 // Prev-btn
-prevBtn(elImgShowcaseControlPrev, elImgShowcaseThumbails, elsImgShowcaseThumbnail, elImgShowcaseActiveImg);
+prevBtn(elImgShowcaseControlPrev, elLightbox, elslLightboxThumbnail, elImgShowcaseActiveImg);
 
 
 // Remove open class on press key ESC
