@@ -248,9 +248,9 @@ prevBtn(elLightboxControlPrev, elLightbox, elslLightboxThumbnail, elLightboxActi
 
 // ******************* Img-showcase ****************
 // Next-btn
-nextBtn(elImgShowcaseControlNextbtn, elsImgShowcaseThumbnail, elImgShowcaseActiveImg);
+nextBtn(elImgShowcaseControlNextbtn,elImgShowcaseThumbails, elsImgShowcaseThumbnail, elImgShowcaseActiveImg);
 // Prev-btn
-prevBtn(elImgShowcaseControlPrev, elsImgShowcaseThumbnail, elImgShowcaseActiveImg);
+prevBtn(elImgShowcaseControlPrev, elImgShowcaseThumbails, elsImgShowcaseThumbnail, elImgShowcaseActiveImg);
 
 
 // Remove open class on press key ESC
